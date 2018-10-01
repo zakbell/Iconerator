@@ -1,5 +1,5 @@
 /*!
- * Iconerator v1.4 (https://github.com/zakbell/iconerator)
+ * Iconerator v1.3 (https://github.com/zakbell/iconerator)
  * Copyright 2015-2018 Zak Bell
  * Licensed under GNU General Public License v3.0 (https://github.com/zakbell/iconerator/blob/master/LICENSE)
  */
@@ -22,19 +22,19 @@ function iconerator() {
 	var path = Folder.selectDialog("Select folder to save");
 
 	// make Android folders
-	var dirxxxhdpi = Folder(path+"/android/drawable-xxxhdpi");
+	var dirxxxhdpi = Folder(path + "/android/drawable-xxxhdpi");
 	if(!dirxxxhdpi.exists) dirxxxhdpi.create();
-	var dirxxhdpi = Folder(path+"/android/drawable-xxhdpi");
+	var dirxxhdpi = Folder(path + "/android/drawable-xxhdpi");
 	if(!dirxxhdpi.exists) dirxxhdpi.create();
-	var dirxhdpi = Folder(path+"/android/drawable-xhdpi");
+	var dirxhdpi = Folder(path + "/android/drawable-xhdpi");
 	if(!dirxhdpi.exists) dirxhdpi.create();
-	var dirhdpi = Folder(path+"/android/drawable-hdpi");
+	var dirhdpi = Folder(path + "/android/drawable-hdpi");
 	if(!dirhdpi.exists) dirhdpi.create();
-	var dirmdpi = Folder(path+"/android/drawable-mdpi");
+	var dirmdpi = Folder(path + "/android/drawable-mdpi");
 	if(!dirmdpi.exists) dirmdpi.create();
 
 	// make iOS folder
-	var dirios = Folder(path+"/ios");
+	var dirios = Folder(path + "/ios");
 	if(!dirios.exists) dirios.create();
 
 	// config Android files
@@ -70,8 +70,8 @@ function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
 
 	// duplicate, resize, name, and export
 	var tempfile = app.activeDocument.duplicate(); // duplicate temporary document
-	tempfile.resizeImage(pxW+"px",pxH+"px"); // resize document
-	pngfile = new File(dir+"/icon_" + fname + "_" + baseW + "x" + baseH + unit + size + ".png"); // create, name file
+	tempfile.resizeImage(pxW + "px",pxH + "px"); // resize document
+	pngfile = new File(dir + "/my_" + fname + "_" + baseW + "x" + baseH + unit + size + ".png"); // create, name file
 	tempfile.exportDocument(pngfile, ExportType.SAVEFORWEB, expops); // export file
 
 	tempfile.close(SaveOptions.DONOTSAVECHANGES); // close duplicate document
