@@ -1,5 +1,5 @@
 /*!
- * Iconerator v1.4 (https://github.com/zakbell/iconerator)
+ * Iconerator v1.4.1 (https://github.com/zakbell/iconerator)
  * Copyright 2015-2018 Zak Bell
  * Licensed under GNU General Public License v3.0 (https://github.com/zakbell/iconerator/blob/master/LICENSE)
  */
@@ -55,8 +55,8 @@ function iconerator() {
 }
 
 function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
-	// filename (use selected layer name, force lowercase, replace spaces with character)
-	var fname = app.activeDocument.activeLayer.name.replace(/\s+/g, '_').toLowerCase();
+	// icon name (use selected layer name, force lowercase, replace spaces with character)
+	var iconame = app.activeDocument.activeLayer.name.replace(/\s+/g, '_').toLowerCase();
 
 	// export options
 	var expops, file;
@@ -68,7 +68,7 @@ function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
 	expops.includeProfile = false;
 	expops.optimized = true;
 
-	// dimensions output for file name (WxH if unequal, else H-only for square)
+	// dimensions output for file name (baseW x baseH if unequal, else baseH-only if square)
 	var dimensions = baseW + "x" + baseH;
 	if (baseW == baseH) {
 		dimensions = baseH;
@@ -77,7 +77,7 @@ function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
 	// duplicate, resize, name, and export
 	var tempfile = app.activeDocument.duplicate(); // duplicate temporary document
 	tempfile.resizeImage(pxW + "px",pxH + "px"); // resize document
-	pngfile = new File(dir + "/my_" + fname + "_" + dimensions + unit + size + ".png"); // create, name file
+	pngfile = new File(dir + "/my_" + iconame + "_" + dimensions + unit + size + ".png"); // create, name file
 	tempfile.exportDocument(pngfile, ExportType.SAVEFORWEB, expops); // export file
 
 	tempfile.close(SaveOptions.DONOTSAVECHANGES); // close duplicate document
