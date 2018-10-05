@@ -1,5 +1,5 @@
 /*!
- * Iconerator v1.3 (https://github.com/zakbell/iconerator)
+ * Iconerator v1.4 (https://github.com/zakbell/iconerator)
  * Copyright 2015-2018 Zak Bell
  * Licensed under GNU General Public License v3.0 (https://github.com/zakbell/iconerator/blob/master/LICENSE)
  */
