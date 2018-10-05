@@ -68,10 +68,16 @@ function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
 	expops.includeProfile = false;
 	expops.optimized = true;
 
+	// dimensions output for file name (WxH if unequal, else H-only for square)
+	var dimensions = baseW + "x" + baseH;
+	if (baseW == baseH) {
+		dimensions = baseH;
+	}
+
 	// duplicate, resize, name, and export
 	var tempfile = app.activeDocument.duplicate(); // duplicate temporary document
 	tempfile.resizeImage(pxW + "px",pxH + "px"); // resize document
-	pngfile = new File(dir + "/my_" + fname + "_" + baseW + "x" + baseH + unit + size + ".png"); // create, name file
+	pngfile = new File(dir + "/my_" + fname + "_" + dimensions + unit + size + ".png"); // create, name file
 	tempfile.exportDocument(pngfile, ExportType.SAVEFORWEB, expops); // export file
 
 	tempfile.close(SaveOptions.DONOTSAVECHANGES); // close duplicate document
