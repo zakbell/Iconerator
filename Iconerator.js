@@ -55,8 +55,8 @@ function iconerator() {
 }
 
 function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
-	// icon name (use selected layer name, force lowercase, replace spaces with character)
-	var iconame = app.activeDocument.activeLayer.name.replace(/\s+/g, '_').toLowerCase();
+	// icon name (use selected layer name, force lowercase, replace characters not a-z or 0-9 with grouped underscore [Android resources can only contain characters 'a-z', '0-9', and undersores '_'])
+	var iconame = app.activeDocument.activeLayer.name.toLowerCase().replace(/([^a-z|0-9])+/g, '_');
 
 	// export options
 	var expops, file;
@@ -80,5 +80,5 @@ function iconerate(dir,pxW,pxH,baseW,baseH,unit,size) {
 	pngfile = new File(dir + "/my_" + iconame + "_" + dimensions + unit + size + ".png"); // create, name file
 	tempfile.exportDocument(pngfile, ExportType.SAVEFORWEB, expops); // export file
 
-	tempfile.close(SaveOptions.DONOTSAVECHANGES); // close duplicate document
+	tempfile.close(SaveOptions.DONOTSAVECHANGES); // close duplicate document (destroy the evidence!)
 }
